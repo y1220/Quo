@@ -12,6 +12,7 @@ config.action_mailer.smtp_settings = {
     :password => ENV["GMAIL_PASSWORD"], 
     :authentication => 'login'
 }
+
   
 
   
