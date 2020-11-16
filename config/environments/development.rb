@@ -13,6 +13,8 @@ config.action_mailer.smtp_settings = {
     :authentication => 'login'
 }
 
+
+
   
 
   
