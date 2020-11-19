@@ -4,7 +4,7 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => "heroku.com",
+    :domain => "quo2020.herokuapp.com",
     :user_name => ENV["GMAIL_USERNAME"], 
     :password => ENV["GMAIL_PASSWORD"], 
     :authentication => 'login'
