@@ -56,7 +56,7 @@ config.action_mailer.smtp_settings = {
 
   #config.action_mailer.perform_caching = false
 
-
+  #config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
