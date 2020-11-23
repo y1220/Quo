@@ -4,8 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 
+gem 'figaro'
  
 gem 'pg', group: :production
+
+gem 'sqlite3', '~> 1.4', group: [:development, :test]
 
 
 gem 'devise'
@@ -36,7 +39,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 #group :development, :test do
-gem 'sqlite3', '~> 1.4', group: [:development, :test]
+
 #end
 
 group :development do
