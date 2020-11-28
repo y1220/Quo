@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   :sessions => 'users/sessions'   
 } 
   resources :posts do
-    #member do
-    #  end
+    member do
+
+      post "delete"
+    end
 
   end
   namespace :users do

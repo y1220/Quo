@@ -8,11 +8,11 @@
             <%= message %>
           </div>
         <% end %>
-        <%= form_for @post,:url => {controller: "posts", action: "update"}, multipart: true do |f| %>
+        <%= form_for @post,:url => {controller: "posts", action: "update"}, method: :put, multipart: true do |f| %>
           <p>title</p>
           <%= f.text_field :title ,value: @post.title%>
           <p>detail</p>
-          <%= f.text_area :content ,value: @post.detail%>
+          <%= f.text_area :detail ,value: @post.detail%>
           <p>type</p>
           <%= f.select(:post_type, @names, {}, { :class => 'choose_the_post_type' }) %>
           <p></p>

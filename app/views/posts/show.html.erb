@@ -19,7 +19,7 @@
             <div class="post-menus">
                 <% if @post.user_id == @current_user.id %>
                 <%= link_to("modify post", "/posts/#{@post.id}/edit") %>
-                <%= link_to("delete post", "/posts/#{@post.id}",{method:"post"}) %>
+                <%= button_to("delete post", "/posts/#{@post.id}",{method:"delete"}) %>
                 <%end%>
             </div>
         </div>

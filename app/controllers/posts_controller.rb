@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user
   before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
+  protect_from_forgery :except => [:destroy]
 
 
   def index
@@ -35,12 +36,12 @@ class PostsController < ApplicationController
       flash[:notice]= "New post created successfully!"
       redirect_to("/posts")
     else
-      show_error("Inserted id doesn't exist..try again!","posts/new")
+      show_error("Some error occured..try again!","posts/new")
     end
   end
 
   def edit
-  	@post = Post.new
+  	@post = Post.find_by(id: params[:id])
     @postTypes = PostType.all
     @names=@postTypes.map{|x| x.name}
   end
@@ -61,11 +62,21 @@ class PostsController < ApplicationController
       redirect_to("/posts/index")
     else
       @post = Post.find_by(id: params[:id])
-      show_error("Inserted id doesn't exist..try again!","posts/#{params[:id]}/edit")
+      #render("posts")
+      flash[:notice]="Some error occured..try again!"
+      redirect_to("/posts/#{@post.id}/edit")
+      #show_error("Inserted id doesn't exist..try again!","posts/#{@post.id}")
     end
   end
 
   def destroy
+  	@post = Post.find_by(id: params[:id])
+    @post.destroy
+    flash[:notice]= "Deleted successfully!"
+    redirect_to("/posts")
+  end
+
+  def delete
   	@post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:notice]= "Deleted successfully!"

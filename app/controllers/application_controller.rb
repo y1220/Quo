@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def set_current_user
-    @current_user= User.find_by(id: session["warden.user.user.key"][0] )
+    @current_user= User.find_by(id: session["warden.user.user.key"][0]) if !session["warden.user.user.key"].nil?
   end
 
   def authenticate_user

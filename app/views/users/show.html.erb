@@ -4,7 +4,8 @@
       <h2><%= @user.name%></h2>
       <% if @user.id==@current_user.id%>
         <%= link_to("modify", "/users/#{@user.id}/edit") %>
-        <%= link_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
+        <%#= button_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
+        <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
       <%end%>
     </div>
     <% @user.posts.each do |post| %>
