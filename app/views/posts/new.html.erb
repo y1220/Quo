@@ -1,0 +1,24 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="users-heading">New post</h1>
+    <div class="form">
+      <div class="form-body">
+        <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_for @post,:url => {controller: "posts", action: "create"}, multipart: true do |f| %>
+          <p>title</p>
+          <%= f.text_field :title%>
+          <p>detail</p>
+          <%= f.text_area :detail%>
+          <p>type</p>
+          <%= f.select(:post_type, @names, {}, { :class => 'choose_the_post_type' }) %>
+          <p></p>
+          <%= f.submit%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

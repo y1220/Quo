@@ -1,6 +1,27 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_current_user
+
+  
+
+
+  def set_current_user
+    @current_user= User.find_by(id: session["warden.user.user.key"][0] )
+  end
+
+  def authenticate_user
+    if @current_user==nil
+      redirect_to("/login")
+    end
+  end
+
+  def forbid_login_user
+    # already loginned
+    if @current_user
+      redirect_to("/posts")
+    end
+  end
 
   protected
 

@@ -1,0 +1,27 @@
+<div class="main posts-show">
+    <div class="container">
+        <div class="posts-show-item">
+            <div class="post-info">
+                <p>
+                    <%= "posted by"%>
+                    <%= link_to(@user.name, "/users/#{@user.id}")%>
+                </p>
+                <p>
+                    <%= "title: #{@post.title}"%>
+                </p>
+                <p>
+                    <%= "detail: #{@post.detail}"%>
+                </p>
+                <p>
+                    <%= "type of post: #{@postType.name}"%>
+                </p>
+            </div>
+            <div class="post-menus">
+                <% if @post.user_id == @current_user.id %>
+                <%= link_to("modify post", "/posts/#{@post.id}/edit") %>
+                <%= link_to("delete post", "/posts/#{@post.id}",{method:"post"}) %>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

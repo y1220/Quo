@@ -12,15 +12,34 @@
 <body>
     <header>
         <div class="header-logo">
+            <% if @current_user %>
+            <%= link_to("Quo", "/posts") %>
+            <% else %>
             <%= link_to("Quo", "/") %>
+            <% end %>
         </div>
         <ul class="header-menus">
+            <% if @current_user %>
+            <li>
+                <%= link_to("Posts","/posts")%>
+            </li>
+            <li>
+                <%= link_to("Create a post","/posts/new")%>
+            </li>
+            <li>
+                <%= link_to("Logout", logout_path)%>
+            </li>
+            <% else %>
             <li>
                 <%= link_to("About us","/about")%>
             </li>
             <li>
                 <%= link_to("Sign up",new_user_registration_path)%>
             </li>
+            <li>
+                <%= link_to("Login","/login")%>
+            </li>
+            <% end %>
         </ul>
     </header>
     <% if flash[:notice]%>

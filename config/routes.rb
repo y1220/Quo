@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+  get 'posts/index'
   #devise_for :users
  # get '/'=> 'home#index'
  devise_for :users, :controllers => {
   :registrations => 'users/registrations',
   :sessions => 'users/sessions'   
 } 
+  resources :posts do
+    #member do
+    #  end
+
+  end
+  namespace :users do
+    get "/:id" ,action: "show"
+  end
 
 devise_scope :user do
   get "user/:id", :to => "users/registrations#detail"
