@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  
   get 'posts/index'
   #devise_for :users
  # get '/'=> 'home#index'
@@ -13,8 +15,22 @@ Rails.application.routes.draw do
     end
 
   end
+
+  namespace :comments do
+    get "/:id/reply" ,action: "reply"
+    post "/:id/create_r" ,action: "create_r"
+    get "/:id/edit" ,action:  "edit"
+    post "/:id/update" ,action:  "update"
+    post "/:id" ,action: "destroy"
+  end
+
+  get 'posts/:id/comments/new' => "comments#new"
+  post "posts/:id/comments/create" => "comments#create"
+
   namespace :users do
     get "/:id" ,action: "show"
+    get "/:id/edit_name" ,action: "edit_name"
+    put "/:id/update_name" ,action: "update_name"
   end
 
 devise_scope :user do

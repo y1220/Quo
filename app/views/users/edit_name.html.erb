@@ -1,0 +1,20 @@
+<div class="main users-new">
+  <div class="container">
+    <h1 class="form-heading">Modify the user name</h1>
+    <div class="form">
+      <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_tag({controller: "users", action: "update_name"}, method: :put) do%>
+          <%#= form_tag("/users/#{@user.id}") do%>
+            <p>user name</p>
+            <input name="user_name" value="<%=@user.name%>" required="true">
+            <input type="submit" value="save">
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>

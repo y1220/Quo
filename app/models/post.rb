@@ -5,5 +5,6 @@ class Post < ApplicationRecord
   validates :post_type, {presence: true}
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
 end

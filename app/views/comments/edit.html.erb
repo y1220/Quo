@@ -1,0 +1,26 @@
+<div class="main posts-new">
+  <div class="container">
+    <div class="post-info">
+      <p><%= "posted by: "%>
+        <%= link_to(@comment.post.user.name, "/users/#{@comment.post.user.id}")%></p>
+      <p><%= "title: #{@comment.post.title}"%></p>
+      <p><%= "detail: #{@comment.post.detail}"%></p>
+    </div>
+    <h1 class="form-heading">Modify the comment message</h1>
+    <%= form_tag("/comments/#{@comment.id}") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @comment.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>message</p>
+          <textarea name="message" required="true"><%=@comment.message%></textarea>
+          <p></p>
+          <input type="submit" value="send">
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

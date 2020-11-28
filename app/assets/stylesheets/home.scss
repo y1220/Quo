@@ -37,7 +37,7 @@ form input[type="submit"] {
   cursor: pointer;
 }
 
-/* 共通レイアウト ================================ */
+/* common layout ================================ */
 body {
   color: #2d3133;
   background-color:   #4d6600;
@@ -62,7 +62,7 @@ body {
   clear: both;
 }
 
-/* ヘッダー ================================ */
+/* header ================================ */
 header {
   height: 64px;
   position: absolute;
@@ -130,7 +130,7 @@ header {
   background-repeat: no-repeat;
   background-position: center 50%;
   background-size: cover;
-  /* 背景画像のCSSを追加してください */
+  /* image CSS */
   background-image: url("/cat.png");
 }
 
@@ -171,7 +171,7 @@ header {
   width: 84%;
 }
 
-/* フォーム================================ */
+/* form ================================ */
 .form {
   max-width: 900px;
   margin: 0 auto;
@@ -232,7 +232,7 @@ header {
   clear: both;
 }
 
-/* フラッシュ ================================ */
+/* flash ================================ */
 .flash {
   padding: 10px 0;
   color: white;
@@ -244,5 +244,9 @@ header {
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+.btn-small {
+  color: red;
 }
 

@@ -3,7 +3,7 @@
         <div class="posts-show-item">
             <div class="post-info">
                 <p>
-                    <%= "posted by"%>
+                    <%= "posted by: "%>
                     <%= link_to(@user.name, "/users/#{@user.id}")%>
                 </p>
                 <p>
@@ -21,6 +21,21 @@
                 <%= link_to("modify post", "/posts/#{@post.id}/edit") %>
                 <%= button_to("delete post", "/posts/#{@post.id}",{method:"delete"}) %>
                 <%end%>
+                <% @post.comments.each do |comment|%>
+                <% if comment.comment_id.blank? %>
+                <div class="posts-index-item">
+                    <%= link_to(comment.message,"/users/#{comment.user.id}")%>
+                    <div class="reply">
+                        <%= link_to("reply","/comments/#{comment.id}/reply")%>
+                        <% if comment.user_id == @current_user.id %>
+                        <%= link_to("modify comment", "/comments/#{comment.id}/edit") %>
+                        <%= button_to("delete comment", "/comments/#{comment.id}",{method:"post"}) %>
+                        <%end%>
+                    </div>
+                </div>
+                <% end %>
+                <% end%>
+                <%= link_to("comment", "/posts/#{@post.id}/comments/new") %>
             </div>
         </div>
     </div>
