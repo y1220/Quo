@@ -8,6 +8,8 @@
 #
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+#config.action_mailer.default_url_options =  { host: 'localhost', port: 3000 } Devise doesn't operate action_mailer
+#config.action_mailer.asset_host = "http://localhost:3000"
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -27,8 +29,12 @@ Devise.setup do |config|
   #config.mailer= "MyDeviseMailer"
   config.mailer_sender = 'quo.notify.2020@gmail.com'
 
+
+
   # Configure the class responsible to send e-mails.
-  #config.mailer = 'MyDeviseMailer'
+  config.mailer = 'UserMailer'
+
+
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

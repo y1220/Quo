@@ -1,7 +1,7 @@
 Rails.application.configure do
 
 
-
+config.action_mailer.asset_host = "http://localhost:3000"
 
 config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
