@@ -41,6 +41,7 @@ class FriendshipsController < ApplicationController
   def destroy
   		#byebug
   	@friendship = Friendship.find_by(user_id: @current_user.id ,receiver_id: params[:id])
+  	@friendship = Friendship.find_by(receiver_id: @current_user.id ,user_id: params[:id]) if @friendship.nil?
     @friendship.destroy
     flash[:notice]= "Deleted successfully!"
     redirect_to("/users/#{params[:id]}")
