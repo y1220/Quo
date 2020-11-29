@@ -9,4 +9,15 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  has_many :friendships, dependent: :destroy
+  has_many :friendships, foreign_key: :receiver_id, dependent: :destroy
+
+  def friends
+  	@friendships1= Friendship.where(user_id: self.id, confirmed: true)
+  	@friendships2= Friendship.where(receiver_id: self.id, confirmed: true)
+  	@friends1=@friendships1.map {|friendship| friendship.receiver_id}
+  	@friends2=@friendships2.map {|friendship| friendship.user_id}
+  	@friends= @friends1+ @friends2
+  end
 end

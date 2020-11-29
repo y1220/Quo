@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  
   get 'posts/index'
   #devise_for :users
  # get '/'=> 'home#index'
@@ -16,6 +17,16 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :friendships do
+    get "/:id/index" ,action: "index"
+    get "/:id/requested" ,action: "requested"
+    #post "/:id/request" ,action: "request"
+    delete "/:id/destroy" ,action: "destroy"
+    post "/:id/send_request" ,action: "send_request"
+    get "/thanks" ,action: "thanks"
+  end
+ 
+
   namespace :comments do
     get "/:id/reply" ,action: "reply"
     post "/:id/create_r" ,action: "create_r"
@@ -24,7 +35,7 @@ Rails.application.routes.draw do
     post "/:id" ,action: "destroy"
   end
 
-  get 'posts/:id/comments/new' => "comments#new"
+  get "posts/:id/comments/new" => "comments#new"
   post "posts/:id/comments/create" => "comments#create"
 
   namespace :users do

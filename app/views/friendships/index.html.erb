@@ -1,0 +1,12 @@
+<div class="main user-show">
+    <div class="container">
+        <div class="user">  
+            <% @current_user.friends.each do |friend| %>
+            <div class="posts-index-item">
+            	<% u=User.find(friend)%>
+                <%= link_to(u.name, "/users/#{u.id}") %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

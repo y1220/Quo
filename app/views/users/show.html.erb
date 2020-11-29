@@ -1,17 +1,33 @@
 <div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <h2><%= @user.name%></h2>
-      <% if @user.id==@current_user.id%>
-        <%= link_to("modify user name", "/users/#{@user.id}/edit_name") %>
-        <%#= button_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
-        <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" },  method: :delete %>
-      <%end%>
+    <div class="container">
+        <div class="user">
+            <h2>
+                <%= @user.name%>
+            </h2>
+            <% if @user.id==@current_user.id%>
+            <%= link_to("modify user name", "/users/#{@user.id}/edit_name") %>
+            <%#= button_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
+            <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" },  method: :delete %>
+            <%end%>
+            
+                <% unless @current_user == @user %>
+                <%if !@current_user.friends.include?(@user.id) %>
+                <%= button_to("/friendships/#{@user.id}/send_request",{method: "post"})do %>
+                <span class="fa fa-heart like-btn"></span>
+                <% end %>
+                <%else%>
+                <%= button_to("/friendships/#{@user.id}/destroy",{method: "delete"})do %>
+                <span class="fa fa-heart unlike-btn"></span>
+                <% end %>
+                <% end %>
+                <% end %>
+              
+          
+            <% @user.posts.each do |post| %>
+            <div class="posts-index-item">
+                <%= link_to(post.title, "/posts/#{post.id}") %>
+            </div>
+            <% end %>
+        </div>
     </div>
-    <% @user.posts.each do |post| %>
-      <div class="posts-index-item">
-        <%= link_to(post.title, "/posts/#{post.id}") %>
-      </div>
-    <% end %>
-  </div>
 </div>
