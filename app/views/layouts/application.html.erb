@@ -27,6 +27,12 @@
                 <%= link_to("Posts","/posts")%>
             </li>
             <li>
+                <%= link_to("Friends","/friendships/#{@current_user.id}/index")%>
+            </li>
+            <li>
+                <%= link_to("Requests","/friendships/#{@current_user.id}/requested")%>
+            </li>
+            <li>
                 <%= link_to("Create a post","/posts/new")%>
             </li>
             <li>

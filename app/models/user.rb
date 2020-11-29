@@ -20,4 +20,11 @@ class User < ApplicationRecord
   	@friends2=@friendships2.map {|friendship| friendship.user_id}
   	@friends= @friends1+ @friends2
   end
+
+  def requests
+  	
+  	@friendships= Friendship.where(receiver_id: self.id, confirmed: false)
+  	@requests=@friendships.map {|friendship| friendship.user_id}
+ 
+  end
 end

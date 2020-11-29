@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "/:id/requested" ,action: "requested"
     #post "/:id/request" ,action: "request"
     delete "/:id/destroy" ,action: "destroy"
+    put "/:id/accept" ,action: "accept"
     post "/:id/send_request" ,action: "send_request"
     get "/thanks" ,action: "thanks"
   end

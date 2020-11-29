@@ -1,0 +1,19 @@
+<div class="main user-show">
+    <div class="container">
+        <h1 class="users-heading">arrived requests</h1>
+        <div class="user">
+            <% @current_user.requests.each do |request| %>
+            <div class="posts-index-item">
+                <% u=User.find(request)%>
+                <%= link_to(u.name, "/users/#{u.id}") %>
+                <div class="reply">
+                    <% f= Friendship.find_by(receiver_id: @current_user.id, user_id: u.id)%>
+                    <%= button_to("/friendships/#{f.id}/accept",{method: "put"})do %>
+                    <span class="fa fa-user-plus"></span>
+                    <% end %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
