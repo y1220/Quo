@@ -1,0 +1,24 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">Chat wall</h1>
+    <div class="post-info">
+      <p><%= "message to "%>
+        <%= link_to(@user.name, "/users/#{@user.id}")%></p>
+    </div>
+    <%= form_tag("/walls/#{@user.id}/create") do %>
+      <div class="form">
+        <div class="form-body">
+          <% @wall.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>message</p>
+          <textarea name="message" required="true"></textarea>
+          <p></p>
+          <input type="submit" value="send">
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

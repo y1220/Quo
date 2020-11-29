@@ -9,20 +9,23 @@
             <%#= button_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
             <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" },  method: :delete %>
             <%end%>
-            
-                <% unless @current_user == @user %>
-                <%if !@current_user.friends.include?(@user.id) %>
-                <%= button_to("/friendships/#{@user.id}/send_request",{method: "post"})do %>
-                <span class="fa fa-heart like-btn"></span>
-                <% end %>
-                <%else%>
-                <%= button_to("/friendships/#{@user.id}/destroy",{method: "delete"})do %>
-                <span class="fa fa-heart unlike-btn"></span>
-                <% end %>
-                <% end %>
-                <% end %>
-              
-          
+            <% unless @current_user == @user %>
+            <%if !@current_user.friends.include?(@user.id) && !@current_user.waitlist.include?(@user.id) %>
+            <%= button_to("/friendships/#{@user.id}/send_request",{method: "post"})do %>
+            <span class="fa fa-heart like-btn"></span>
+            <% end %>
+            <%elsif @current_user.waitlist.include?(@user.id) %>
+            <%= "waiting a response.."%>
+            <%else%>
+            <%= button_to("/friendships/#{@user.id}/destroy",{method: "delete"})do %>
+            <span class="fa fa-heart unlike-btn"></span>
+            <% end %>
+            <%@friendship = Friendship.find_by(user_id: @current_user.id ,receiver_id: params[:id])
+                @friendship = Friendship.find_by(receiver_id: @current_user.id ,
+                 user_id: params[:id]) if @friendship.nil?%>
+            <%= link_to("send a message", "/walls/#{@user.id}/new") %>
+            <% end %>
+            <% end %>
             <% @user.posts.each do |post| %>
             <div class="posts-index-item">
                 <%= link_to(post.title, "/posts/#{post.id}") %>

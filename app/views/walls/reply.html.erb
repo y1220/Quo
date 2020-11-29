@@ -1,0 +1,33 @@
+<div class="main posts-show">
+    <div class="container">
+        <div class="posts-show-item">
+            <div class="post-menus">
+                <% @walls.each do |wall|%>
+                <div class="posts-index-item">
+                    <% if wall.sender == @current_user %>
+                    <div class="reply">
+                        <h6>
+                            <%=wall.message %>
+                        </h6>
+                    </div>
+                    <% else %>
+                    <h6>
+                        <%=wall.message %>
+                    </h6>
+                    <% end %>
+                </div>
+                <% end%>
+                <div class="form">
+                    <div class="form-body">
+                        <%= form_tag("/walls/#{params[:id]}/update") do %>
+                        <p>reply</p>
+                        <textarea name="message" required="true"></textarea>
+                        <p></p>
+                        <input type="submit" value="send">
+                    </div>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

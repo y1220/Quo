@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  
-  
-  get 'posts/index'
+  #get 'posts/index'
   #devise_for :users
  # get '/'=> 'home#index'
  devise_for :users, :controllers => {
@@ -15,6 +13,14 @@ Rails.application.routes.draw do
       post "delete"
     end
 
+  end
+
+  namespace :walls do
+    get "/:id/new" ,action: "new"
+    post "/:id/create" ,action: "create"
+    get "/:id/reply" ,action: "reply"
+    post "/:id/update" ,action:  "update"
+    post "/:id" ,action: "destroy"
   end
 
   namespace :friendships do

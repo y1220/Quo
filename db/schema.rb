@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_093829) do
+ActiveRecord::Schema.define(version: 2020_11_29_201130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_093829) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "receiver_id"
     t.index ["receiver_id"], name: "index_friendships_on_receiver_id"
+    t.index ["user_id", "receiver_id"], name: "index_friendships_on_user_id_and_receiver_id", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
@@ -74,9 +75,21 @@ ActiveRecord::Schema.define(version: 2020_11_29_093829) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "walls", force: :cascade do |t|
+    t.bigint "friendship_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sender_id"
+    t.string "message"
+    t.index ["friendship_id"], name: "index_walls_on_friendship_id"
+    t.index ["sender_id"], name: "index_walls_on_sender_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "receiver_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "walls", "friendships"
+  add_foreign_key "walls", "users", column: "sender_id"
 end
