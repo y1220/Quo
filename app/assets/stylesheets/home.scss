@@ -1,3 +1,68 @@
+ 
+
+
+//Copyright (c) 2017 by yoksel (http://codepen.io/yoksel/pen/muxnF)
+
+
+//Fork of an original work by yoksel (http://codepen.io/yoksel/pen/eolqw)
+
+
+
+//Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation //files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, //modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the //Software is furnished to do so, subject to the following conditions:
+
+//The above copyright notice and this permission notice shall be included in all copies or substantial portions of the //Software.
+
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE //WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR //COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, //ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+ $bgcolor: #F2DBA5;
+$transparent: rgba(255, 255, 255, 0);
+
+$color-1: white;
+$color-2: #B3CCA2;
+$color-2-1: transparentize($color-2, .3);
+$color-3: #CCC394;
+$color-3-1: transparentize($color-3, .3);
+
+$size: 3em;
+$big-size: $size*2;
+$min: $size*.5;
+$max: $size*.6;
+
+HTML {
+  height: 100%;
+  }
+BODY {
+  background: 
+    radial-gradient(circle,
+      $color-2 $min/2,
+      $transparent $min/2, $transparent $min,
+      $color-3-1 $min, $color-3-1 $max, 
+      $transparent $max
+      ) 0 0,
+    radial-gradient(circle,
+      $color-3 $min/2,
+      $transparent $min/2, $transparent $min,
+      $color-2-1 $min, $color-2-1 $max, 
+      $transparent $max
+      ) $size $size,
+    
+    radial-gradient(circle,
+      $color-2-1 $min/4,
+      $transparent $min/4
+      ) $size 0,
+    radial-gradient(circle,
+      $color-3-1 $min/5,
+      $transparent $min/5
+      ) 0 $size
+    ;
+  background-size:  $big-size $big-size;
+  background-color: $bgcolor;
+  background-repeat: repeat;
+  font: 16px/2 'Trebuchet MS', Verdana, sans-serif;
+  }
+
 /* carousel ================================ */
 .carousel {
   margin-bottom: 4rem;
@@ -71,7 +136,7 @@ form input[type="submit"] {
 /* common layout ================================ */
 body {
   color: #2d3133;
-  background-color:   #4d6600;
+  //background-color:   #4d6600;
   margin: 0;
   min-height: 1vh;
 }
@@ -82,7 +147,7 @@ body {
   width: 100%;
   height: auto;
   min-height: 100%;
-  background-color: #ffffb3;
+  //background-color: #ffffb3;
 }
 
 .container {
