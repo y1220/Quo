@@ -1,4 +1,35 @@
+/* carousel ================================ */
+.carousel {
+  margin-bottom: 4rem;
+}
 
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+.carousel-item {
+  height: 32rem;
+  max-width: 100vw;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.welcome-carousel-image1{
+  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.3);
+  background-image:url("/quokka.png");
+}
+
+.welcome-carousel-image2{
+  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.3);
+  background-image:url("/turtle.png");
+}
+
+.welcome-carousel-image3{
+  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.3);
+  background-image:url("/sheep.png");
+}
   
 /* reset ================================ */
 * {
