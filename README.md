@@ -3,9 +3,12 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+https://github.com/quo1220/Quo(updated ver)
+
 Things you may want to cover:
 
 * Ruby version
+ruby-2.7.2
 
 * System dependencies
 
